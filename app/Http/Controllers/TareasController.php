@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tareas;
 
 class TareasController extends Controller
 {
@@ -13,7 +14,8 @@ class TareasController extends Controller
      */
     public function index()
     {
-        return view('tareas.index');
+        $tareas = Tareas::all();
+        return view('tareas.index')->with('tareas', $tareas);
     }
 
     /**
@@ -23,7 +25,7 @@ class TareasController extends Controller
      */
     public function create()
     {
-        //
+        return view('tareas.create');
     }
 
     /**
@@ -34,7 +36,14 @@ class TareasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tarea = new Tareas();
+        
+        $tarea->ID = $request->get('ID');
+        $tarea->descripcion = $request->get('descripcion');
+
+        $tarea->save();
+
+        return redirect('/tareas');
     }
 
     /**
@@ -56,7 +65,8 @@ class TareasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tarea = Tareas::find($id);
+        return view('tarea.edit')->with('tarea', $tarea);
     }
 
     /**
@@ -68,7 +78,14 @@ class TareasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tarea = Tareas::find($id);
+        
+        $tarea->ID = $request->get('ID');
+        $tarea->descripcion = $request->get('descripcion');
+
+        $tarea->save();
+
+        return redirect('/tareas');
     }
 
     /**
@@ -79,6 +96,9 @@ class TareasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tarea = Tareas::find($id);
+        $tarea->delete();
+
+        return redirect('/tareas');
     }
 }

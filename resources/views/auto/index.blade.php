@@ -21,8 +21,12 @@
                 <td>{{$auto->numero_auto}}</td>
                 <td>{{$auto->cant_puntos}}</td>
                 <td>
-                    <a href="{{ url('/autos/{$auto->id}/edit') }}" a class="btn btn-info">Editar</a>
-                    <button class="btn btn-danger">Borrar</button>
+                    <form action = "{{route ('autos.destroy', $auto->id)}}" method = "POST">
+                    <a href="{{ url("/autos/{$auto->id}/edit") }}" a class="btn btn-info">Editar</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('¿Está seguro que desea eliminar este auto?')">Borrar</button>
+                    </form>
                 </td>
             <tr>    
             @endforeach

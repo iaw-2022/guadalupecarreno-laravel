@@ -2,6 +2,18 @@
 
 @section('content')
 <h2>EDITAR AUTO</h2>
+
+<div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+</div>
 <div>
     <form action="/autos/{{$auto->id}}" method="POST">
     @csrf
