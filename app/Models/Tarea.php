@@ -9,8 +9,8 @@ class Tarea extends Model
 {
     use HasFactory;
     
-    public function tieneTareas(){
+    public function autos(){
 
-        return $this->belongsToMany(ToDoList::class, 'tieneTareas');
+        return $this->belongsToMany(Auto::class, 'to_do_lists', 'id_auto', 'id_tarea');
     }
 }

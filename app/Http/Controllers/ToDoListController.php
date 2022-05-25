@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ToDoList;
 
 class ToDoListController extends Controller
 {
@@ -13,7 +14,7 @@ class ToDoListController extends Controller
      */
     public function index()
     {
-        return view('todolist.index');
+        //
     }
 
     /**
@@ -34,7 +35,14 @@ class ToDoListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $todolist = new ToDoList();
+
+        $todolist->id_auto = $request->get('id_auto');
+        $todolist->id_tarea = $request->get('id_tarea');
+
+        $todolist->save();
+
+        return redirect('/autos');
     }
 
     /**

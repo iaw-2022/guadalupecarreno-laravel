@@ -1,4 +1,4 @@
-@extends('layouts.plantillabase');
+@extends('layouts.plantillabase')
 
 @section('content')
 <h2>EDITAR TAREA</h2>

@@ -1,4 +1,4 @@
-@extends('layouts.plantillabase');
+@extends('layouts.plantillabase')
 
 @section('content')
 <a href="{{ url('tareas/create') }}" class="mt-5 btn btn-outline-success">Agregar tarea</a>
@@ -9,6 +9,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Descripción</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>

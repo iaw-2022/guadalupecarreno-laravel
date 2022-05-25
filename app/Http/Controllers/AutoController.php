@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Auto;
+use App\Models\Tarea;
 
 class AutoController extends Controller
 {
@@ -56,7 +57,9 @@ class AutoController extends Controller
      */
     public function show($id)
     {
-        //
+        $auto = Auto::find($id);
+        $tareas = Tarea::all();
+        return view('auto.show')->with('auto', $auto)->with('tareas', $tareas);
     }
 
     /**
