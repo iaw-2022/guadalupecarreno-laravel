@@ -18,7 +18,7 @@
                 <td>{{$tarea->descripcion}}</td> 
                 <td>
                     <form action = "{{route ('tareas.destroy', $tarea->id)}}" method = "POST">
-                    <a href="{{ url("/tarea/{$tarea->id}/edit") }}" a class="btn btn-info">Editar</a>
+                    <a href="{{ url("/tareas/{$tarea->id}/edit") }}" a class="btn btn-info">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger" onclick=" return confirm('¿Está seguro que desea eliminar esta tarea?')">Borrar</button>

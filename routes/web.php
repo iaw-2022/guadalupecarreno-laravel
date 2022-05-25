@@ -28,7 +28,7 @@ Route::get('/home', function () {
 */
 Route::resource('autos', 'App\Http\Controllers\AutoController');  
 Route::resource('todolist', 'App\Http\Controllers\ToDoListController'); 
-Route::resource('tareas', 'App\Http\Controllers\TareasController'); 
+Route::resource('tareas', 'App\Http\Controllers\TareaController'); 
 
 
 Route::get('/dashboard', function () {

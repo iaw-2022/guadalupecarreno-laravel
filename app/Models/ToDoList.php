@@ -11,6 +11,6 @@ class ToDoList extends Model
 
     public function tieneTareas(){
 
-        return $this->belongsToMany(Tareas::class, 'tieneTareas');
+        return $this->belongsToMany(Tarea::class, 'tieneTareas');
     }
 }
