@@ -4,7 +4,7 @@
 <a href="{{ url('autos/create') }}" class="mt-5 btn btn-outline-success">Agregar auto</a>
 
 <div>
-    <table class="table table-dark table-striped mt-4">
+    <table class="table table-striped mt-4">
         <thead>
             <tr>
                 <th scope="col">Ranking en el campeonato</th>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Auto;
 use App\Models\Tarea;
+use App\Models\ToDoList;
 
 class AutoController extends Controller
 {
@@ -15,8 +16,8 @@ class AutoController extends Controller
      */
     public function index()
     {
-        $autos = Auto::all();
-        return view('auto.index')->with('autos', $autos);
+       $autos = Auto::all();
+       return view('auto.index')->with('autos', $autos);
     }
 
     /**

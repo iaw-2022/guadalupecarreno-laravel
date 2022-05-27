@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ToDoList;
+use Illuminate\Support\Facades\DB;
 
 class ToDoListController extends Controller
 {
@@ -42,7 +43,7 @@ class ToDoListController extends Controller
 
         $todolist->save();
 
-        return redirect('/autos');
+        return redirect('/autos/'.$request->get('id_auto'));
     }
 
     /**
@@ -78,7 +79,7 @@ class ToDoListController extends Controller
     {
         //
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -86,7 +87,25 @@ class ToDoListController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {        
+       //
     }
+
+    /**
+     * 
+     */    
+    public function eliminarTarea(Request $request)
+    {
+        $todolist_auto_tarea = DB::table('to_do_lists')
+                ->where('id_auto', '=', $request->get('id_auto'))
+                ->where('id_tarea', '=', $request->get('id_tarea'))
+                ->get();
+
+        $id_todolist = $todolist_auto_tarea[0]->{'id'};      
+
+        $todolist_eliminar = ToDoList::find($id_todolist);
+        $todolist_eliminar->delete();       
+
+        return redirect('/autos/'.$request->get('id_auto'));
+    }    
 }

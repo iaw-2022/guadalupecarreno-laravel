@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('to_do_lists', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('id_auto');//llave foranea
             $table->unsignedBigInteger('id_tarea');//llave foranea

@@ -25,6 +25,14 @@
             @foreach($auto -> tareas as $tarea)
             <tr>
                 <td>{{$tarea->descripcion}}</td>
+                <td>
+                    <form action = "/todolist/eliminar" method = "POST">
+                    @csrf
+                    <input type="hidden" name="id_auto" class="form-control rounded-0" value="{{ $auto->id }}">
+                    <input type="hidden" name="id_tarea" class="form-control rounded-0" value="{{ $tarea->id }}">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('¿Está seguro que desea eliminar este tarea del auto?')">Borrar</button>
+                    </form>
+                </td>
             </tr>    
             @endforeach
         </tbody>
