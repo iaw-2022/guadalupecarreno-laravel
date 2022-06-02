@@ -66,7 +66,13 @@ class AutoController extends Controller
     {
         $auto = Auto::find($id);
         $tareas = Tarea::all();
-        return view('auto.show')->with('auto', $auto)->with('tareas', $tareas);
+
+        $tareas_auto = $auto->tareas()->get(); //obtengo todas las tareas que estan en ese auto
+        $tareas_muestro = $tareas->diff($tareas_auto); //quiero que solo se muestren las tareas
+                                                       // que no estan relacionadas a ese auto
+                    
+        
+        return view('auto.show')->with('auto', $auto)->with('tareas', $tareas_muestro);
     }
 
     /**

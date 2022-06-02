@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">      
-      &#127937 TOMBA RACING 
+    <a class="navbar-brand">      
+      <i><b>&#127937 TOMBA RACING</b></i> 
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,6 +15,14 @@
           <a class="nav-link active" aria-current="page" href="/tareas">  Tareas</a>
         </li>
       </ul>
+      <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <x-dropdown-link class="btn btn-info" :href="route('logout')"
+                onclick="event.preventDefault();
+                            this.closest('form').submit();">
+            {{ __('Log Out') }}
+        </x-dropdown-link>
+      </form>
     </div>
   </div>
 </nav>
