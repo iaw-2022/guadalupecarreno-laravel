@@ -38,6 +38,12 @@ class AutoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'ranking_campeonato'=>'required|integer',
+            'piloto'=>'required|max:255|unique:autos',
+            'numero_auto'=>'required|integer|unique:autos',
+            'cant_puntos'=>'required|integer',
+        ]);
         $auto = new Auto();
         
         $auto->ranking_campeonato = $request->get('ranking_campeonato');
@@ -85,7 +91,13 @@ class AutoController extends Controller
     public function update(Request $request, $id)
     {
         $auto = Auto::find($id);
-        
+        $request->validate([
+            'ranking_campeonato'=>'required|integer',
+            'piloto'=>'required|max:255|unique:autos,piloto,' .$auto->id,
+            'numero_auto'=>'required|integer|unique:autos,numero_auto,'.$auto->id,
+            'cant_puntos'=>'required|integer',
+        ]);
+
         $auto->ranking_campeonato = $request->get('ranking_campeonato');
         $auto->piloto = $request->get('piloto');
         $auto->numero_auto = $request->get('numero_auto'); 
