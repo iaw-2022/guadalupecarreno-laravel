@@ -88,7 +88,6 @@ class TareaController extends Controller
             'descripcion'=>'required|unique:tareas,descripcion,' .$tarea->id,
         ]);
 
-        $tarea->descripcion = $request->get('ID');
         $tarea->descripcion = $request->get('descripcion');
 
         $tarea->save();
