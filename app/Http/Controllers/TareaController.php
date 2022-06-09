@@ -41,8 +41,7 @@ class TareaController extends Controller
         ]);
 
         $tarea = new Tarea();
-        
-        $tarea->ID = $request->get('ID');
+    
         $tarea->descripcion = $request->get('descripcion');
 
         $tarea->save();
