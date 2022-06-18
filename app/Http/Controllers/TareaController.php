@@ -84,7 +84,7 @@ class TareaController extends Controller
         $tarea = Tarea::find($id);
         
         $request->validate([
-            'descripcion'=>'required|unique:tareas,descripcion,' .$tarea->id,
+            'descripcion'=>'required|max:255|unique:tareas,descripcion,' .$tarea->id,
         ]);
 
         $tarea->descripcion = $request->get('descripcion');
