@@ -14,8 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return redirect()->to('login');
+});
+/*
+
+Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', function () {
+    return view('home');
+});
+*/
+Route::resource('autos', 'App\Http\Controllers\AutoController');  
+Route::resource('todolist', 'App\Http\Controllers\ToDoListController'); 
+Route::resource('tareas', 'App\Http\Controllers\TareaController'); 
+
+Route::post('todolist/eliminar', 'App\Http\Controllers\ToDoListController@eliminarTarea');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
